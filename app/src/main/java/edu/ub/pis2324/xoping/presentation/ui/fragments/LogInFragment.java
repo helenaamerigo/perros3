@@ -111,7 +111,7 @@ public class LogInFragment extends Fragment {
           String clientModelJsonString = new Gson().toJson(logInState.getData());
           editor.putString("CLIENT_MODEL", clientModelJsonString);
           editor.commit();
-          navController.navigate(R.id.action_logInFragment_to_shoppingFragment);
+          navController.navigate(R.id.action_logInFragment_to_catalegFragment);
           break;
         case ERROR:
           assert logInState.getError() != null;

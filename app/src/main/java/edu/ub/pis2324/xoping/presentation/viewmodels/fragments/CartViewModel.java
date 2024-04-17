@@ -22,7 +22,7 @@ import edu.ub.pis2324.xoping.domain.responses.FetchCartResponse;
 import edu.ub.pis2324.xoping.presentation.pos.ClientPO;
 import edu.ub.pis2324.xoping.domain.usecases.FetchCartUseCase;
 import edu.ub.pis2324.xoping.domain.usecases.RemoveFromCartUseCase;
-import edu.ub.pis2324.xoping.presentation.pos.ProductPO;
+import edu.ub.pis2324.xoping.presentation.pos.AnimalPO;
 import edu.ub.pis2324.xoping.presentation.pos.mappers.DomainToPOMapper;
 import edu.ub.pis2324.xoping.utils.error_handling.XopingError;
 import edu.ub.pis2324.xoping.utils.error_handling.XopingThrowable;
@@ -90,9 +90,9 @@ public class CartViewModel extends AndroidViewModel {
     compositeDisposable.add(d);
   }
 
-  public void removeFromCart(PricedLineItem<ProductPO> pricedLineItem) {
-    ProductPO productPO = pricedLineItem.getItem();
-    Disposable d = removeFromCartUseCase.execute(clientPO.getId(), productPO.getId())
+  public void removeFromCart(PricedLineItem<AnimalPO> pricedLineItem) {
+    AnimalPO animalPO = pricedLineItem.getItem();
+    Disposable d = removeFromCartUseCase.execute(clientPO.getId(), animalPO.getId())
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(
@@ -105,12 +105,12 @@ public class CartViewModel extends AndroidViewModel {
 
   private void handleFetchCartSuccess(FetchCartResponse fetchCartResponse) {
     // Cast List<PricedLineItem<Product>> to List<PricedLineItem<ProductPO>>
-    List<PricedLineItem<ProductPO>> pricedLineItems = new ArrayList<>();
+    List<PricedLineItem<AnimalPO>> pricedLineItems = new ArrayList<>();
     for (PricedLineItem<Animal> pricedLineItem : fetchCartResponse.getPricedLineItems()) {
       Animal product = pricedLineItem.getItem();
       pricedLineItems.add(
           new PricedLineItem<>(
-              domainToPOMapper.map(product, ProductPO.class),
+              domainToPOMapper.map(product, AnimalPO.class),
               pricedLineItem.getQuantity(),
               pricedLineItem.getSubtotalPrice()
           )

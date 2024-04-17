@@ -27,7 +27,7 @@
     <string name="shop_search_hint">Search by name…</string>
     <string name="no_data_available">Oops! No products were found</string>
 
-    <!--   View productPO details screen -->
+    <!--   View animalPO details screen -->
     <string name="view_product_details_title">Product details</string>
     <string name="buy_button">Buy</string>
 

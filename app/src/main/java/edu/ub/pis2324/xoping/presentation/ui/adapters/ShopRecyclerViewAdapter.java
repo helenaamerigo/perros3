@@ -15,13 +15,13 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import edu.ub.pis2324.xoping.R;
-import edu.ub.pis2324.xoping.presentation.pos.ProductPO;
+import edu.ub.pis2324.xoping.presentation.pos.AnimalPO;
 
 public class ShopRecyclerViewAdapter extends RecyclerView.Adapter<ShopRecyclerViewAdapter.ProductViewHolder> {
   /* Attributes */
 
   /* ProductModel list to show in the recycler view */
-  private List<ProductPO> productPOList;
+  private List<AnimalPO> animalPOList;
   /* Listener to callback the activity */
   private final OnProductClickListener onProductClickListener;
   private final OnProductHideIconClickListener onProductHideIconClickListener;
@@ -30,7 +30,7 @@ public class ShopRecyclerViewAdapter extends RecyclerView.Adapter<ShopRecyclerVi
    * Interface to callback the activity when a product is clicked.
    */
   public interface OnProductClickListener {
-    void onProductClick(ProductPO productPO);
+    void onProductClick(AnimalPO animalPO);
   }
 
   /**
@@ -55,11 +55,11 @@ public class ShopRecyclerViewAdapter extends RecyclerView.Adapter<ShopRecyclerVi
 
   /**
    * Set the reference to the data displayed in the recycler view.
-   * @param productPOList: The list of products to be displayed.
+   * @param animalPOList: The list of products to be displayed.
    */
   @SuppressLint("NotifyDataSetChanged")
-  public void setData(List<ProductPO> productPOList) {
-    this.productPOList = productPOList; // Note that this is a reference, not a copy. It is
+  public void setData(List<AnimalPO> animalPOList) {
+    this.animalPOList = animalPOList; // Note that this is a reference, not a copy. It is
                                     // instead modified by the ViewModel directly
     notifyDataSetChanged(); // Reflect the changes in the UI
   }
@@ -91,7 +91,7 @@ public class ShopRecyclerViewAdapter extends RecyclerView.Adapter<ShopRecyclerVi
 
     /* Return the ViewHolder object */
     return new ProductViewHolder(view,
-      position -> onProductClickListener.onProductClick(productPOList.get(position)),
+      position -> onProductClickListener.onProductClick(animalPOList.get(position)),
       position -> onProductHideIconClickListener.onProductHideIconClick(position)
     );
   }
@@ -106,7 +106,7 @@ public class ShopRecyclerViewAdapter extends RecyclerView.Adapter<ShopRecyclerVi
   @Override
   public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
     /* Get the data from the data element */
-    ProductPO p = productPOList.get(position);
+    AnimalPO p = animalPOList.get(position);
     String name = p.getName();
     String price = p.getPrice();
     String imageUrl = p.getImageUrl();
@@ -123,7 +123,7 @@ public class ShopRecyclerViewAdapter extends RecyclerView.Adapter<ShopRecyclerVi
    */
   @Override
   public int getItemCount() {
-    return (productPOList == null) ? 0 : productPOList.size();
+    return (animalPOList == null) ? 0 : animalPOList.size();
   }
 
   /**

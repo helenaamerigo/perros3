@@ -17,15 +17,15 @@ import java.util.List;
 
 import edu.ub.pis2324.xoping.R;
 import edu.ub.pis2324.xoping.domain.model.valueobjects.PricedLineItem;
-import edu.ub.pis2324.xoping.presentation.pos.ProductPO;
+import edu.ub.pis2324.xoping.presentation.pos.AnimalPO;
 
 public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerViewAdapter.CartLineItemViewHolder> {
 
-  private List<PricedLineItem<ProductPO>> pricedLineItems;
+  private List<PricedLineItem<AnimalPO>> pricedLineItems;
   private OnRemoveItemListener onRemoveItemListener;
 
   public interface OnRemoveItemListener {
-    void onRemoveItem(PricedLineItem<ProductPO> position);
+    void onRemoveItem(PricedLineItem<AnimalPO> position);
   }
 
   public CartRecyclerViewAdapter(
@@ -36,13 +36,13 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
   }
 
   @SuppressLint("NotifyDataSetChanged")
-  public void setData(List<PricedLineItem<ProductPO>> lineItemModels) {
+  public void setData(List<PricedLineItem<AnimalPO>> lineItemModels) {
     this.pricedLineItems = lineItemModels;
     notifyDataSetChanged();
   }
 
   private void removeItem(int position) {
-    PricedLineItem<ProductPO> cartLine = pricedLineItems.remove(position);
+    PricedLineItem<AnimalPO> cartLine = pricedLineItems.remove(position);
     notifyItemRemoved(position);
     onRemoveItemListener.onRemoveItem(cartLine);
   }
@@ -59,15 +59,15 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
 
   @Override
   public void onBindViewHolder(@NonNull CartLineItemViewHolder holder, int position) {
-    PricedLineItem<ProductPO> pricedLineItem = pricedLineItems.get(position);
-    ProductPO productPO = pricedLineItem.getItem();
+    PricedLineItem<AnimalPO> pricedLineItem = pricedLineItems.get(position);
+    AnimalPO animalPO = pricedLineItem.getItem();
     Integer quantity = pricedLineItem.getQuantity();
     String subtotalPrice = pricedLineItem.getSubtotalPrice().toString();
 
-    holder.tvCartLineProductName.setText(productPO.getName());
+    holder.tvCartLineProductName.setText(animalPO.getName());
     holder.tvCartLineProductQuantity.setText(quantity.toString());
     holder.tvCartLineSubtotalPrice.setText(subtotalPrice);
-    Picasso.get().load(productPO.getImageUrl()).into(holder.ivCartLineProductImage);
+    Picasso.get().load(animalPO.getImageUrl()).into(holder.ivCartLineProductImage);
   }
 
   @Override

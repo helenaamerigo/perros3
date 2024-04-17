@@ -101,7 +101,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void showHome() {
-        navController.navigate(R.id.action_logInFragment_to_shoppingFragment);
+        navController.navigate(R.id.action_logInFragment_to_catalegFragment);
     }
     @Override
     public boolean onSupportNavigateUp() {

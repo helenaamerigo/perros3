@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import edu.ub.pis2324.xoping.domain.model.entities.Animal;
-import edu.ub.pis2324.xoping.domain.usecases.FetchProductsByNameUseCase;
-import edu.ub.pis2324.xoping.domain.usecases.FetchProductsCatalogUseCase;
-import edu.ub.pis2324.xoping.presentation.pos.ProductPO;
+import edu.ub.pis2324.xoping.domain.usecases.FetchAnimalsByNameUseCase;
+import edu.ub.pis2324.xoping.domain.usecases.FetchAnimalsCatalogUseCase;
+import edu.ub.pis2324.xoping.presentation.pos.AnimalPO;
 import edu.ub.pis2324.xoping.presentation.pos.mappers.DomainToPOMapper;
 import edu.ub.pis2324.xoping.utils.error_handling.XopingError;
 import edu.ub.pis2324.xoping.utils.error_handling.XopingThrowable;
@@ -23,11 +23,11 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class ShoppingViewModel extends ViewModel {
   /* Attributes */
-  private final FetchProductsCatalogUseCase fetchProductsCatalogUseCase;
-  private final FetchProductsByNameUseCase fetchProductsByNameUseCase;
-  private final List<ProductPO> productPOs;
+  private final FetchAnimalsCatalogUseCase fetchAnimalsCatalogUseCase;
+  private final FetchAnimalsByNameUseCase fetchAnimalsByNameUseCase;
+  private final List<AnimalPO> animalPOS;
   /* LiveData */
-  private final StateLiveData<List<ProductPO>> productsState;  // products' list
+  private final StateLiveData<List<AnimalPO>> productsState;  // products' list
   private final StateLiveData<Integer> hiddenProductState;
   /* RxJava */
   private final CompositeDisposable compositeDisposable;
@@ -35,12 +35,12 @@ public class ShoppingViewModel extends ViewModel {
   private final DomainToPOMapper domainToPOMapper;
 
   /* Constructor */
-  public ShoppingViewModel(FetchProductsCatalogUseCase fetchProductsCatalogUseCase,
-                           FetchProductsByNameUseCase fetchProductsByNameUseCase) {
+  public ShoppingViewModel(FetchAnimalsCatalogUseCase fetchAnimalsCatalogUseCase,
+                           FetchAnimalsByNameUseCase fetchAnimalsByNameUseCase) {
     super();
-    this.fetchProductsCatalogUseCase = fetchProductsCatalogUseCase;
-    this.fetchProductsByNameUseCase = fetchProductsByNameUseCase;
-    productPOs = new ArrayList<>();
+    this.fetchAnimalsCatalogUseCase = fetchAnimalsCatalogUseCase;
+    this.fetchAnimalsByNameUseCase = fetchAnimalsByNameUseCase;
+    animalPOS = new ArrayList<>();
     productsState = new StateLiveData<>();
     hiddenProductState = new StateLiveData<>();
     compositeDisposable = new CompositeDisposable();
@@ -63,7 +63,7 @@ public class ShoppingViewModel extends ViewModel {
    * Returns the state of the products being fetched
    * @return the state of the products being fetched
    */
-  public StateLiveData<List<ProductPO>> getProductsState() {
+  public StateLiveData<List<AnimalPO>> getProductsState() {
     return productsState;
   }
 
@@ -90,7 +90,7 @@ public class ShoppingViewModel extends ViewModel {
       But the response is asychronous, so we ask the productRepository
       to set an observable and we subscribe to it.
     */
-    Disposable d = fetchProductsCatalogUseCase.execute()
+    Disposable d = fetchAnimalsCatalogUseCase.execute()
       .subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread())
       .subscribe(
@@ -113,7 +113,7 @@ public class ShoppingViewModel extends ViewModel {
       But the response is asychronous, so we ask the productRepository
       to set an observable and we subscribe to it.
     */
-    Disposable d = fetchProductsByNameUseCase.execute(name)
+    Disposable d = fetchAnimalsByNameUseCase.execute(name)
       .subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread())
       .subscribe(
@@ -126,20 +126,20 @@ public class ShoppingViewModel extends ViewModel {
 
   public void handleFetchProductsCatalogSuccess(List<Animal> gottenProducts) {
     // Presentation code
-    List<ProductPO> gottenProductPOs = gottenProducts
+    List<AnimalPO> gottenAnimalPOS = gottenProducts
         .stream()
-        .map(product -> domainToPOMapper.map(product, ProductPO.class))
+        .map(product -> domainToPOMapper.map(product, AnimalPO.class))
         .collect(Collectors.toList());
 
-    productPOs.clear();
-    productPOs.addAll(gottenProductPOs);
-    productsState.postSuccess(productPOs);
+    animalPOS.clear();
+    animalPOS.addAll(gottenAnimalPOS);
+    productsState.postSuccess(animalPOS);
   }
 
   public void handleFetchProductsCatalogError(Throwable throwable) {
     String message;
     XopingError xError = ((XopingThrowable) throwable).getError();
-    if (xError == FetchProductsCatalogUseCase.Error.PRODUCTS_DATA_ACCESS_ERROR)
+    if (xError == FetchAnimalsCatalogUseCase.Error.ANIMALS_DATA_ACCESS_ERROR)
       message = "Data access error";
     else
       message = "Unknown error";
@@ -152,7 +152,7 @@ public class ShoppingViewModel extends ViewModel {
    * @param position
    */
   public void hideProduct(int position) {
-    productPOs.remove(position);
+    animalPOS.remove(position);
     hiddenProductState.postSuccess(position);
   }
 
@@ -160,15 +160,15 @@ public class ShoppingViewModel extends ViewModel {
    * Factory for the ViewModel to be able to pass parameters to the constructor
    */
   public static class Factory extends ViewModelProvider.NewInstanceFactory {
-    private final FetchProductsCatalogUseCase fetchProductsCatalogUseCase;
-    private final FetchProductsByNameUseCase fetchProductsByNameUseCase;
+    private final FetchAnimalsCatalogUseCase fetchAnimalsCatalogUseCase;
+    private final FetchAnimalsByNameUseCase fetchAnimalsByNameUseCase;
 
     public Factory(
-        FetchProductsCatalogUseCase fetchProductsCatalogUseCase,
-        FetchProductsByNameUseCase fetchProductsByNameUseCase
+        FetchAnimalsCatalogUseCase fetchAnimalsCatalogUseCase,
+        FetchAnimalsByNameUseCase fetchAnimalsByNameUseCase
     ) {
-      this.fetchProductsCatalogUseCase = fetchProductsCatalogUseCase;
-      this.fetchProductsByNameUseCase = fetchProductsByNameUseCase;
+      this.fetchAnimalsCatalogUseCase = fetchAnimalsCatalogUseCase;
+      this.fetchAnimalsByNameUseCase = fetchAnimalsByNameUseCase;
     }
 
     @NonNull
@@ -176,8 +176,8 @@ public class ShoppingViewModel extends ViewModel {
     @SuppressWarnings("unchecked")
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
       return (T) new ShoppingViewModel(
-          fetchProductsCatalogUseCase,
-          fetchProductsByNameUseCase
+              fetchAnimalsCatalogUseCase,
+              fetchAnimalsByNameUseCase
       );
     }
   }

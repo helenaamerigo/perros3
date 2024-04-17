@@ -26,8 +26,7 @@ import android.view.ViewGroup;
 import edu.ub.pis2324.xoping.AppContainer;
 import edu.ub.pis2324.xoping.MyApplication;
 import edu.ub.pis2324.xoping.R;
-import edu.ub.pis2324.xoping.databinding.FragmentShoppingBinding;
-import edu.ub.pis2324.xoping.presentation.pos.ProductPO;
+import edu.ub.pis2324.xoping.presentation.pos.AnimalPO;
 import edu.ub.pis2324.xoping.presentation.ui.adapters.ShopRecyclerViewAdapter;
 import edu.ub.pis2324.xoping.presentation.viewmodels.fragments.ShoppingViewModel;
 
@@ -45,7 +44,7 @@ public class ShoppingFragment extends Fragment {
   /* View binding & navigation */
   private AppContainer appContainer;
   private NavController navController;
-  private FragmentShoppingBinding binding;
+  //private FragmentShoppingBinding binding;
 
   public static ShoppingFragment newInstance() {
     return new ShoppingFragment();
@@ -54,8 +53,9 @@ public class ShoppingFragment extends Fragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                            @Nullable Bundle savedInstanceState) {
-    binding = FragmentShoppingBinding.inflate(inflater, container, false);
-    return binding.getRoot();
+    //binding = FragmentShoppingBinding.inflate(inflater, container, false);
+    //return binding.getRoot();
+    return null;
   }
 
   @Override
@@ -132,7 +132,7 @@ public class ShoppingFragment extends Fragment {
    */
   private void initRecyclerView() {
     rvLayoutManager = new LinearLayoutManager(getContext());
-    binding.rvProducts.setLayoutManager(rvLayoutManager);
+    //binding.rvProducts.setLayoutManager(rvLayoutManager);
 
     initRecyclerViewAdapter();
   }
@@ -145,16 +145,16 @@ public class ShoppingFragment extends Fragment {
         product -> navigateToViewProductDetailsFragment(product),
         position -> shoppingViewModel.hideProduct(position)
     );
-    binding.rvProducts.setAdapter(rvProductsAdapter);
+    //binding.rvProducts.setAdapter(rvProductsAdapter);
   }
 
   /**
    * Starts the ViewProductDetailsActivity.
-   * @param productPO the product to be shown
+   * @param animalPO the product to be shown
    */
-  private void navigateToViewProductDetailsFragment(ProductPO productPO) {
+  private void navigateToViewProductDetailsFragment(AnimalPO animalPO) {
     Bundle bundle = new Bundle();
-    bundle.putParcelable("PRODUCT", productPO);
+    bundle.putParcelable("PRODUCT", animalPO);
     navController.navigate(R.id.action_shoppingFragment_to_viewProductDetailsFragment, bundle);
   }
 
@@ -166,8 +166,8 @@ public class ShoppingFragment extends Fragment {
     shoppingViewModel = new ViewModelProvider(
         this,
         new ShoppingViewModel.Factory(
-            appContainer.fetchProductsCatalogUseCase,
-            appContainer.fetchProductsByNameUseCase
+            appContainer.fetchAnimalsCatalogUseCase,
+            appContainer.fetchAnimalsByNameUseCase
         )
     ).get(ShoppingViewModel.class);
 
@@ -212,8 +212,8 @@ public class ShoppingFragment extends Fragment {
    * @param mustShow true if the message must be shown, false otherwise
    */
   private void showNoProductsAvailable(boolean mustShow) {
-    binding.clNoProductsAvailable.setVisibility(
-        mustShow ? android.view.View.VISIBLE : android.view.View.GONE
-    );
+    //binding.clNoProductsAvailable.setVisibility(
+        //mustShow ? android.view.View.VISIBLE : android.view.View.GONE
+    //);
   }
 }
