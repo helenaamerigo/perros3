@@ -47,8 +47,7 @@ public class FetchProductsByNameUseCaseTest {
     String name = "Apple";
 
     List<Animal> productsList = new ArrayList<>();
-    productsList.add(new Animal(new AnimalId(UUID.randomUUID().toString()), "Apple iPhone 14", "apple iphone 14", "An older apple phone", new Price(1199.99, "€"), null));
-    productsList.add(new Animal(new AnimalId(UUID.randomUUID().toString()), "Apple iPhone 15", "apple iphone 15", "A newer apple phone", new Price(1299.99, "€"), null));
+
 
     when(productRepository.getByName(name)).thenReturn(Observable.just(productsList));
 
