@@ -6,21 +6,18 @@ import edu.ub.pis2324.xoping.domain.di.repositories.AnimalRepository;
 import edu.ub.pis2324.xoping.domain.di.repositories.AbstractRepositoryFactory;
 import edu.ub.pis2324.xoping.domain.usecases.AddProductToCartUseCase;
 import edu.ub.pis2324.xoping.domain.services.CheckClientExistsService;
-import edu.ub.pis2324.xoping.domain.usecases.FetchCartUseCase;
 import edu.ub.pis2324.xoping.domain.usecases.FetchClientUseCase;
-import edu.ub.pis2324.xoping.domain.usecases.FetchProductsByNameUseCase;
-import edu.ub.pis2324.xoping.domain.usecases.FetchProductsCatalogUseCase;
+import edu.ub.pis2324.xoping.domain.usecases.FetchAnimalsByNameUseCase;
+import edu.ub.pis2324.xoping.domain.usecases.FetchAnimalsCatalogUseCase;
 import edu.ub.pis2324.xoping.domain.usecases.LogInUseCase;
-import edu.ub.pis2324.xoping.domain.usecases.RemoveFromCartUseCase;
 import edu.ub.pis2324.xoping.domain.usecases.SignUpUseCase;
 import edu.ub.pis2324.xoping.domain.usecases.implementations.AddProductToCartUseCaseImpl;
 import edu.ub.pis2324.xoping.domain.services.implementations.CheckClientExistsServiceImpl;
 //import edu.ub.pis2324.xoping.domain.usecases.implementations.FetchCartUseCaseImpl;
 import edu.ub.pis2324.xoping.domain.usecases.implementations.FetchClientUseCaseImpl;
-import edu.ub.pis2324.xoping.domain.usecases.implementations.FetchProductsByNameUseCaseImpl;
-import edu.ub.pis2324.xoping.domain.usecases.implementations.FetchProductsCatalogUseCaseImpl;
+import edu.ub.pis2324.xoping.domain.usecases.implementations.FetchAnimalsByNameUseCaseImpl;
+import edu.ub.pis2324.xoping.domain.usecases.implementations.FetchAnimalsCatalogUseCaseImpl;
 import edu.ub.pis2324.xoping.domain.usecases.implementations.LogInUseCaseImpl;
-import edu.ub.pis2324.xoping.domain.usecases.implementations.RemoveFromCartUseCaseImpl;
 import edu.ub.pis2324.xoping.domain.usecases.implementations.SignUpUseCaseImpl;
 
 public class AppContainer {
@@ -46,11 +43,11 @@ public class AppContainer {
   //public final FetchCartUseCase fetchCartUseCase
      // = new FetchCartUseCaseImpl(fetchClientUseCase, productRepository);
 
-  public final FetchProductsCatalogUseCase fetchProductsCatalogUseCase
-      = new FetchProductsCatalogUseCaseImpl(productRepository);
+  public final FetchAnimalsCatalogUseCase fetchAnimalsCatalogUseCase
+      = new FetchAnimalsCatalogUseCaseImpl(productRepository);
 
-  public final FetchProductsByNameUseCase fetchProductsByNameUseCase
-      = new FetchProductsByNameUseCaseImpl(productRepository);
+  public final FetchAnimalsByNameUseCase fetchAnimalsByNameUseCase
+      = new FetchAnimalsByNameUseCaseImpl(productRepository);
 
   public final LogInUseCase logInUseCase
       = new LogInUseCaseImpl(fetchClientUseCase);

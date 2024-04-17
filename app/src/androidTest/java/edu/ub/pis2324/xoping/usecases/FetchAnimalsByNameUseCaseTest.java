@@ -12,9 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 import edu.ub.pis2324.xoping.domain.di.repositories.AnimalRepository;
 import edu.ub.pis2324.xoping.domain.model.entities.Animal;
-import edu.ub.pis2324.xoping.domain.model.valueobjects.AnimalId;
-import edu.ub.pis2324.xoping.domain.usecases.FetchProductsByNameUseCase;
-import edu.ub.pis2324.xoping.domain.usecases.implementations.FetchProductsByNameUseCaseImpl;
+import edu.ub.pis2324.xoping.domain.usecases.FetchAnimalsByNameUseCase;
+import edu.ub.pis2324.xoping.domain.usecases.implementations.FetchAnimalsByNameUseCaseImpl;
 import edu.ub.pis2324.xoping.data.repositories.firestore.AnimalFirestoreRepository;
 import io.reactivex.rxjava3.observers.TestObserver;
 
@@ -28,13 +27,13 @@ import io.reactivex.rxjava3.observers.TestObserver;
 @RunWith(AndroidJUnit4.class)
 public class FetchAnimalsByNameUseCaseTest {
 
-  private FetchProductsByNameUseCase fetchAnimalsByNameUseCase;
+  private FetchAnimalsByNameUseCase fetchAnimalsByNameUseCase;
   private AnimalRepository productRepository;
 
   @Before
   public void setUp() {
     productRepository = new AnimalFirestoreRepository();
-    fetchAnimalsByNameUseCase = new FetchProductsByNameUseCaseImpl(productRepository);
+    fetchAnimalsByNameUseCase = new FetchAnimalsByNameUseCaseImpl(productRepository);
   }
 
   @Test

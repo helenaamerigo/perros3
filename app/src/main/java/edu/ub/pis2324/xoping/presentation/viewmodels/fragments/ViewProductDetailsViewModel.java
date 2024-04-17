@@ -14,8 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.gson.Gson;
 
+import edu.ub.pis2324.xoping.presentation.pos.AnimalPO;
 import edu.ub.pis2324.xoping.presentation.pos.ClientPO;
-import edu.ub.pis2324.xoping.presentation.pos.ProductPO;
 import edu.ub.pis2324.xoping.domain.usecases.AddProductToCartUseCase;
 import edu.ub.pis2324.xoping.utils.error_handling.XopingError;
 import edu.ub.pis2324.xoping.utils.error_handling.XopingThrowable;
@@ -30,10 +30,10 @@ public class ViewProductDetailsViewModel extends AndroidViewModel {
   private final AddProductToCartUseCase addProductToCartUseCase;
   /* Attributes */
   private final ClientPO clientPO;
-  private final ProductPO productPO;
+  private final AnimalPO animalPO;
   private Integer quantity;
   /* LiveData */
-  private final MutableLiveData<ProductPO> productState;
+  private final MutableLiveData<AnimalPO> productState;
   private final MutableLiveData<Integer> quantityState;
   private final StateLiveData<Void> addedToCartState;
   /* RxJava */
@@ -43,15 +43,15 @@ public class ViewProductDetailsViewModel extends AndroidViewModel {
   public ViewProductDetailsViewModel(
       Application application,
       AddProductToCartUseCase addProductToCartUseCase,
-      ProductPO productPO
+      AnimalPO animalPO
   ) {
     super(application);
     this.addProductToCartUseCase = addProductToCartUseCase;
-    this.productPO = productPO;
+    this.animalPO = animalPO;
 
     this.quantity = 1;
 
-    productState = new MutableLiveData<>(this.productPO);
+    productState = new MutableLiveData<>(this.animalPO);
     quantityState = new MutableLiveData<>(this.quantity);
     addedToCartState = new StateLiveData<>();
 
@@ -73,7 +73,7 @@ public class ViewProductDetailsViewModel extends AndroidViewModel {
    * Returns the product model
    * @return the product model
    */
-  public LiveData<ProductPO> getProductState() { return productState  ; }
+  public LiveData<AnimalPO> getProductState() { return productState  ; }
   /**
    * Returns the quantity of the product
    * @return the quantity of the product
@@ -111,7 +111,7 @@ public class ViewProductDetailsViewModel extends AndroidViewModel {
   public void addToCart() {
     addedToCartState.postLoading();
 
-    Disposable d = addProductToCartUseCase.execute(clientPO.getId(), productPO.getId(), quantity)
+    Disposable d = addProductToCartUseCase.execute(clientPO.getId(), animalPO.getId(), quantity)
       .subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread())
       .subscribe(
@@ -139,16 +139,16 @@ public class ViewProductDetailsViewModel extends AndroidViewModel {
   public static class Factory extends ViewModelProvider.NewInstanceFactory {
     private final Application application;
     private final AddProductToCartUseCase addProductToCartUseCase;
-    private final ProductPO productPO;
+    private final AnimalPO animalPO;
 
     public Factory(
         Application application,
         AddProductToCartUseCase addProductToCartUseCase,
-        ProductPO productPO
+        AnimalPO animalPO
     ) {
       this.application = application;
       this.addProductToCartUseCase = addProductToCartUseCase;
-      this.productPO = productPO;
+      this.animalPO = animalPO;
     }
 
     @NonNull
@@ -159,7 +159,7 @@ public class ViewProductDetailsViewModel extends AndroidViewModel {
           application,
           addProductToCartUseCase,
 //          clientModel,
-          productPO
+              animalPO
       );
     }
   }

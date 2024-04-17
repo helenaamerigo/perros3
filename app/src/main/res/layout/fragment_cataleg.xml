@@ -110,32 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:elevation="8dp"
-        app:cardCornerRadius="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="19dp">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/im4" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginStart="100dp"
-                android:paddingStart="40dp"
-                android:paddingEnd="40dp"
-                android:text="Boto" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        app:cardCornerRadius="8dp"/>
 
     <!-- Quinta CardView -->
     <androidx.cardview.widget.CardView
@@ -176,32 +151,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:elevation="8dp"
-        app:cardCornerRadius="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="19dp">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/im6" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginStart="100dp"
-                android:paddingStart="40dp"
-                android:paddingEnd="40dp"
-                android:text="Boto" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        app:cardCornerRadius="8dp"/>
 
     <!-- Septima CardView -->
     <androidx.cardview.widget.CardView
@@ -209,31 +159,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:elevation="8dp"
-        app:cardCornerRadius="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="19dp">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/im7" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginStart="100dp"
-                android:paddingStart="40dp"
-                android:paddingEnd="40dp"
-                android:text="Boto" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        app:cardCornerRadius="8dp"/>
 
 </LinearLayout>
