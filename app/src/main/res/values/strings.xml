@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Todos Para Perros</string>
+    <string name="logo_name">Todos Para Perros</string>
+    <string name="element_text">Text</string>
+    <string name="element_number">N</string>
+    <string name="disclaimer_text">Projecte Integrat de Software (2023/24), Universitat de Barcelona.
+        MEDAH.</string>
+
+    <!--   Login screen -->
+    <string name="login_title">Hi, there!</string>
+    <string name="login_text">Log-in with your credentials:</string>
+    <string name="login_enter_username_hint">Username</string>
+    <string name="login_enter_password_hint">Password</string>
+    <string name="login_button">Log in</string>
+    <string name="signup_button">Sign up</string>
+
+    <!--   Signup screen -->
+    <string name="signup_title">Sign-up</string>
+    <string name="signup_text">Create an account with these credentials:</string>
+    <string name="signup_enter_username_hint">Username</string>
+    <string name="signup_email_hint">Email</string>
+    <string name="signup_enter_password_hint">Password</string>
+    <string name="signup_enter_password_confirmation_hint">Repeat password</string>
+    <string name="signup_confirmation_button">Confirm</string>
+
+    <!--   Shopping screen -->
+    <string name="shop_search_hint">Search by name…</string>
+    <string name="no_data_available">Oops! No products were found</string>
+
+    <!--   View productPO details screen -->
+    <string name="view_product_details_title">Product details</string>
+    <string name="buy_button">Buy</string>
+
+    <!-- Cart screen -->
+    <string name="remove_from_cart">Remove</string>
+    <string name="total_price_label">Total price:</string>
+
+    <!-- Profile screen -->
+    <string name="edit_profile_button">Edit Profile</string>
+    <string name="logout_button">Logout</string>
+
+    <!--   Bottom view -->
+    <string name="shop_title">Shop</string>
+    <string name="cart_title">Cart</string>
+    <string name="profile_title">Profile</string>
+</resources>

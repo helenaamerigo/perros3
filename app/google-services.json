@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "602329293886",
+    "project_id": "perros-e908f",
+    "storage_bucket": "perros-e908f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602329293886:android:a79d81e33e48f459661d6f",
+        "android_client_info": {
+          "package_name": "edu.ub.pis2324.xoping"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIhVYsdPg3KL_RrDxdwqdE85HlsvVJ9x4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
