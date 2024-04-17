@@ -49,7 +49,7 @@
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_logInFragment_to_catalegFragment"
-            app:destination="@id/shoppingFragment" />
+            app:destination="@id/catalegFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -63,10 +63,11 @@
     <fragment
         android:id="@+id/catalegFragment"
         android:name="edu.ub.pis2324.xoping.presentation.ui.fragments.CatalegFragment"
-        android:label="@string/signup_title"
+        android:label="@string/cataleg_title"
         tools:layout="@layout/fragment_cataleg" >
         <action
             android:id="@+id/action_catalegFragment_to_logInFragment"
-            app:destination="@id/logInFragment" />
+            app:destination="@id/profileFragment" />
     </fragment>
+
 </navigation>

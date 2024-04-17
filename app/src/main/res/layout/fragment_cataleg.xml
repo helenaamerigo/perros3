@@ -26,6 +26,7 @@
                 android:src="@drawable/im1" />
 
             <Button
+                android:id="@+id/enrique"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -59,6 +60,7 @@
                 android:src="@drawable/im2" />
 
             <Button
+                android:id="@+id/kevin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -92,6 +94,7 @@
                 android:src="@drawable/im3" />
 
             <Button
+                android:id="@+id/bloom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -133,6 +136,7 @@
                 android:src="@drawable/im5" />
 
             <Button
+                android:id="@+id/marieta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"

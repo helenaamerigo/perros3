@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -23,6 +24,9 @@ import com.google.gson.Gson;
 import edu.ub.pis2324.xoping.AppContainer;
 import edu.ub.pis2324.xoping.MyApplication;
 import edu.ub.pis2324.xoping.R;
+import edu.ub.pis2324.xoping.presentation.ui.activities.CatalegActivity;
+import edu.ub.pis2324.xoping.presentation.ui.activities.LogInActivity;
+import edu.ub.pis2324.xoping.presentation.ui.activities.MainActivity;
 import edu.ub.pis2324.xoping.presentation.viewmodels.fragments.LogInViewModel;
 
 public class LogInFragment extends Fragment {
@@ -103,10 +107,8 @@ public class LogInFragment extends Fragment {
           break;
         case SUCCESS:
           assert logInState.getData() != null;
-//          Intent intent = new Intent(getActivity(), MainActivity.class);
-//          intent.putExtra("CLIENT_MODEL", logInState.getData());
-//          startActivity(intent);
-//          getActivity().finish();
+          //Intent intent = new Intent(this, CatalegActivity.class);
+          //startActivity(intent);
           SharedPreferences.Editor editor = getActivity().getSharedPreferences("LOGIN", MODE_PRIVATE).edit();
           String clientModelJsonString = new Gson().toJson(logInState.getData());
           editor.putString("CLIENT_MODEL", clientModelJsonString);

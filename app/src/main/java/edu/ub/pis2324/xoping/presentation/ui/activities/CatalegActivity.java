@@ -72,6 +72,7 @@ public class CatalegActivity extends AppCompatActivity  {
                         layout.addView(button);
                     }
                 }
+                showInfo();
             } else {
                 Log.d("CatalegActivity", "Error getting documents: ", task.getException());
             }
@@ -80,6 +81,6 @@ public class CatalegActivity extends AppCompatActivity  {
     }
 
     private void showInfo() {
-        navController.navigate(R.id.shoppingFragment);
+        navController.navigate(R.id.profileFragment);
     }
 }

@@ -43,4 +43,9 @@
     <string name="shop_title">Shop</string>
     <string name="cart_title">Cart</string>
     <string name="profile_title">Profile</string>
+
+    <!--   Cataleg -->
+    <string name="cataleg_title">Cataleg</string>
+    <string name="cataleg_text">Aquí tens els nostres productes:</string>
+
 </resources>
